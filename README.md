@@ -1,5 +1,5 @@
 # CurveAndAreaApproximation
-Approximate curves using Cubic Spline, Continuous Trigonometric Polynomial, and Discrete Trigonometric Polynomial approximation. 
+Approximate the top curve using Cubic Spline, Continuous Trigonometric Polynomial, and Discrete Trigonometric Polynomial approximation. 
 Approximate areas using Simpson’s Rule and Trapezoidal’s Rule.
 
 
@@ -8,7 +8,8 @@ clc;
 clear;
 
 
-% 2.)
+% 2.) 
+% Use Cubic Spline to approximate the top curve with the collected data points.
 
 % fprintf('Head')
 
@@ -103,6 +104,7 @@ ylabel('y-axis');
 
 
 %  3.)
+% Use Continuous Trigonometric Polynomial method to approximate the top curve.
 [h1a0 h1a1 h1a2 h1a3 h1b1 h1b2 h1b3]=trigpoly_HuyTran(@(x)4 + 8*(x-1) + 5.8651*(x-1).^2 + -23.4606*(x-1).^3,1,1.25);
 [h2a0 h2a1 h2a2 h2a3 h2b1 h2b2 h2b3]=trigpoly_HuyTran(@(x)6 + 6.5337*(x-1.25) + -11.7303*(x-1.25).^2 + 4.7562*(x-1.25).^3,1.25,3);
 [h3a0 h3a1 h3a2 h3a3 h3b1 h3b2 h3b3]=trigpoly_HuyTran(@(x)7 + 9.1749*(x-3) + 13.2395*(x-3).^2 + -39.7559*(x-3).^3,3,3.25);
@@ -132,12 +134,14 @@ fprintf(formatspec1,leadinga,a1,b1,a2,b2,a3,b3)
 fplot(S3,[1,23],'b');
 
 
-% 4.)
+% 4.) 
+% Displays 20 random points from the Cubic Spline function on the interval 1 to 23.
 ran=randperm(23,20);
 scatter(ran,pw(ran),'filled','MarkerFaceColor',[171 104 87]./255)
 
 
 % 5.)
+% Displays a Linear Regression line for the 20 random points.
 x=ran;
 y=pw(ran);
 [b m]=leastsq_HuyTran(x,y);
@@ -147,6 +151,7 @@ lsqline=@(x)m*x+b;
 plot(x,lsqline(x),'r')
 
 % 6.)
+% Use Discrete Trigonometric Polynomial to approximate the top curve.
 [a0 a1 b1 a2 b2 a3]=disctrigpoly_HuyTran(x,y);
 T3=@(x)a0/2+a1*cos(x)+b1*sin(x)+a2*cos(x.*2)+b2*sin(x.*2)+a3*cos(x.*3);
 leadinga2=a0/2;
@@ -155,3 +160,4 @@ fprintf(formatspec1,leadinga2,a1,b1,a2,b2,a3)
 fplot(T3,[1,23],'Color',[.5 0 .5])
 legend('top curve','continuous trigonometric method','20 random points','least square method','discrete trigonometric method');
 
+![image](https://user-images.githubusercontent.com/102829980/161407641-4d03aeeb-1abd-4540-964f-0c647e8e1e21.png)
