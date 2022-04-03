@@ -7,6 +7,7 @@ Approximate areas using Simpson’s Rule and Trapezoidal’s Rule.
 clc;
 clear;
 
+---------------------------------------------------------------------------------------------------------------------
 
 % 2.) 
 % Use Cubic Spline to approximate the top curve with the collected data points.
@@ -101,6 +102,7 @@ xlabel('x-axis');
 ylabel('y-axis');
 
 
+---------------------------------------------------------------------------------------------------------------------
 
 
 %  3.)
@@ -133,11 +135,15 @@ formatspec1='S3 = %4.2f + %4.2fcos(x) + %4.2fsin(x) + %4.2fcos(2x) + %4.2fsin(2x
 fprintf(formatspec1,leadinga,a1,b1,a2,b2,a3,b3)
 fplot(S3,[1,23],'b');
 
+---------------------------------------------------------------------------------------------------------------------
+
 
 % 4.) 
 % Displays 20 random points from the Cubic Spline function on the interval 1 to 23.
 ran=randperm(23,20);
 scatter(ran,pw(ran),'filled','MarkerFaceColor',[171 104 87]./255)
+
+---------------------------------------------------------------------------------------------------------------------
 
 
 % 5.)
@@ -149,6 +155,9 @@ formatspec2='y = %4.2fx + %4.2f\n';
 fprintf(formatspec2,m,b)
 lsqline=@(x)m*x+b;
 plot(x,lsqline(x),'r')
+
+---------------------------------------------------------------------------------------------------------------------
+
 
 % 6.)
 % Use Discrete Trigonometric Polynomial to approximate the top curve.
