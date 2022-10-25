@@ -1,7 +1,5 @@
 # CurveAndAreaApproximation
-Approximate the top curve using Cubic Spline, Continuous Trigonometric Polynomial, and Discrete Trigonometric Polynomial approximation. 
-Approximate areas using Simpson’s Rule and Trapezoidal’s Rule.
-
+Approximate the hand-drawn curve using Cubic Spline, Continuous Trigonometric Polynomial, and Discrete Trigonometric Polynomial approximation. Approximate areas using Simpson’s Rule and Trapezoidal’s Rule.
 
 
 clc;
